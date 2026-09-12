@@ -1,0 +1,7 @@
+# Proveedores descargados: pesan y se regeneran con init
+.terraform/
+
+# El estado: puede contener datos sensibles y vive en otra parte
+*.tfstate
+*.tfstate.*
+crash.log
