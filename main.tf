@@ -8,9 +8,9 @@ terraform {
 }
 
 provider "google" {
-  project = "maquinavirtual-507221"
+  project = var.proyecto
   region  = "us-central1"
-  zone    = "us-central1-a"
+  zone    = var.zona
 }
 
 resource "google_compute_firewall" "permitir_http" {
@@ -28,7 +28,7 @@ resource "google_compute_firewall" "permitir_http" {
 
 resource "google_compute_instance" "web" {
   name         = "web-tf"
-  machine_type = "e2-micro"
+  machine_type = var.tipo_maquina
   tags         = ["servidor-web"]
 
   boot_disk {
