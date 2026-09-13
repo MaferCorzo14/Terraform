@@ -116,12 +116,6 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-![Plan](evidencias/01/terraform_plan/plan.png)
-![Plan (detalle)](evidencias/01/terraform_plan/plan1.png)
-![Plan (detalle)](evidencias/01/terraform_plan/plan2.png)
-![Apply](evidencias/01/terraform_apply/apply.png)
-![Git status](evidencias/01/git_status/status.png)
-
 ### Fase 2 — Salida y comprobacion
 
 ```bash
@@ -131,9 +125,6 @@ mariafernandacoca@cloudshell:~/Terraform (maquinavirtual-507221)$ terraform outp
 mariafernandacoca@cloudshell:~/Terraform (maquinavirtual-507221)$ curl -m 8 http://$(terraform output -raw ip_externa)
 <h1><Grupo 6></h1><p>Servida desde Terraform por web-tf</p>
 ```
-
-![Output ip_externa](evidencias/02/ip_externa/output%20ip_externa.png)
-![Curl](evidencias/02/curl/curl.png)
 
 ### Fase 3 — Idempotencia y deriva
 
@@ -175,10 +166,6 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 mariafernandacoca@cloudshell:~/Terraform (maquinavirtual-507221)$ gcloud compute instances describe web-tf --format="value(tags.items)" --zone=us-central1-a
 servidor-web
 ```
-
-![Apply sin cambios](evidencias/03/terraform_apply/apply.png)
-![Deriva detectada](evidencias/03/deriva/deriva.png)
-![Describe](evidencias/03/describe/describe.png)
 
 ### Fase 4 — Variables y cambio de tipo
 
@@ -222,10 +209,6 @@ Outputs:
 ip_externa = "136.114.113.250"
 ```
 
-![Error](evidencias/04/error/error.png)
-![Corrección del error](evidencias/04/correcion_error/correcion_error.png)
-![Output ip_externa tras el cambio](evidencias/04/correcion_error/output%20ip_externa.png)
-
 ### Fase 5 — Destruir y volver a crear
 
 ```bash
@@ -256,8 +239,6 @@ sys     0m0.802s
 | `gcloud` (Práctica 1, fase 5) | Tiempo real 0m14.773s |
 | Terraform (hoy) | Tiempo real 0m4.427s |
 
-![Destroy](evidencias/05/destroy/destroy.png)
-![Apply](evidencias/05/apply/apply.png)
 
 ### Fase 6 — Estado remoto 
 
@@ -267,8 +248,6 @@ Se agrega el bloque `backend "gcs"` en `main.tf` (bucket `tfstate-maquinavirtual
 mariafernandacoca@cloudshell:~/Terraform (maquinavirtual-507221)$ gcloud storage ls gs://tfstate-maquinavirtual-507221/**
 gs://tfstate-maquinavirtual-507221/practica-2/default.tfstate
 ```
-
-![Estado en el bucket](evidencias/06/gcloud_storage/gcloud_storage.png)
 
 ### Fase 7 — Dejar el proyecto limpio
 
@@ -303,10 +282,6 @@ deda51b feat: agregar output ip_externa
 12068ed feat: Config de Terraform para VM y firewall en GCP
 61181f2 Initial commit
 ```
-
-![Listas vacías](evidencias/07/listas_vacias/listas_vacias.png)
-![Git log](evidencias/07/git%20log/git_log.png)
-![Informe de facturación](evidencias/07/facturacion/facturacion.png)
 
 ### Reto — IP externa estática
 
@@ -356,10 +331,6 @@ Por último, se cambia otra vez el tipo de máquina con `-var` para demostrar qu
 terraform apply -var="tipo_maquina=e2-small"
 terraform output ip_externa
 ```
-
-![Plan del reto (con el bug de placeholder)](evidencias/reto/plan/plan.png)
-![IP externa tras crear la dirección estática](evidencias/reto/output1%20ip_externa/ip_externa.png)
-![IP externa tras cambiar el tipo de máquina](evidencias/reto/output2%20ip_externa/ip_externa.png)
 
 ## Preguntas
 
